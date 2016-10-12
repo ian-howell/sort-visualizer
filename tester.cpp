@@ -9,9 +9,12 @@ using namespace std;
 int main()
 {
     const int SIZE = 10;
-    int a[SIZE];
-
     srand(time(NULL));
+
+    // Test quicksort with integers
+    cout << "INTS" << endl;
+
+    int a[SIZE];
 
     for (int i = 0; i < SIZE; i++)
     {
@@ -28,7 +31,27 @@ int main()
     }
     cout << endl;
 
+    // Test quicksort with doubles
+    cout << "DOUBLES" << endl;
+    double b[SIZE];
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        b[i] = (rand() % 100) / 2.0;
+        cout << b[i] << " ";
+    }
+    cout << endl;
+
+    quick_sort(a, 0, SIZE-1);
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << b[i] << " ";
+    }
+    cout << endl;
+
     initscr();
+    getchar();
     clear();
 
     int x, y;

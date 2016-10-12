@@ -2,10 +2,13 @@
 #define HELPERS_H
 
 /* swap
- * Swaps 2 integers
+ * Swaps 2 values
  *
- * example: swap(a, b) where a and b are integers
+ * example: swap(a, b)
  */
-void swap(int& x, int& y);
+template <typename T>
+void swap(T& x, T& y);
+
+#include "helpers.hpp"
 
 #endif
