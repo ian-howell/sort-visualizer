@@ -52,6 +52,9 @@ int main()
     cout << endl;
 
     initscr();
+    start_color();
+    init_pair(1, COLOR_BLACK, COLOR_BLACK);
+    init_pair(2, COLOR_WHITE, COLOR_WHITE);
     getchar();
     clear();
 
@@ -62,10 +65,10 @@ int main()
     refresh();
     getchar();
 
-    Column* columns[y];
-    for (int i = 0; i < y; i++)
+    Column* columns[x];
+    for (int i = 0; i < x; i++)
     {
-        columns[i] = new Column(i);
+        columns[i] = new Column(rand() % y);
         columns[i]->draw(i, y);
         refresh();
         getchar();
