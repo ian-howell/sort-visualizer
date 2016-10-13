@@ -8,6 +8,9 @@
  *
  * Running time: ~ O(nlg(n))
  */
-void quick_sort(int a[], int b, int e);
+template <typename T>
+void quick_sort(T a[], int b, int e);
+
+#include "sorts.hpp"
 
 #endif

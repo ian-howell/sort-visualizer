@@ -1,12 +1,11 @@
-#include "sorts.h"
 #include "helpers.h"
-
-void quick_sort(int a[], int b, int e)
+template <typename T>
+void quick_sort(T a[], int b, int e)
 {
     if (b >= e)
         return;
 
-    int pivot = a[e];
+    T pivot = a[e];
     int w = b-1;
     int j = b;
     while (j != e)
