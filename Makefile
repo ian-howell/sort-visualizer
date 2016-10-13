@@ -1,5 +1,5 @@
 CXXHEADERS = $(wildcard *.h)
-CXXSOURCES = sorts.cpp
+CXXSOURCES = sorts.cpp column.cpp
 CXXOBJECTS = $(CXXSOURCES:%.cpp=%.o)
 
 TESTSOURCE = tester.cpp

@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <ctime>
 #include <ncurses.h>
+#include "column.h"
 #include "sorts.h"
 using namespace std;
 
@@ -57,12 +58,20 @@ int main()
     int x, y;
     getmaxyx(stdscr, y, x);
 
-    for (int i = y; i >= 0; i--)
+    printw("%d === %d\n", x, y);
+    refresh();
+    getchar();
+
+    Column* columns[y];
+    for (int i = 0; i < y; i++)
     {
-        mvprintw(i, 0, "M");
+        columns[i] = new Column(i);
+        columns[i]->draw(i, y);
         refresh();
-        usleep(1000000);
+        getchar();
     }
+
+    getchar();
     endwin();
 
     return 0;
