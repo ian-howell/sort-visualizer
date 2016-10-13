@@ -8,7 +8,7 @@ class Column
 
     public:
         Column(int h) : height(h) {}
-        
+
         /* draw
          *
          * draws the column to the screen
