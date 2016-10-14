@@ -6,15 +6,19 @@ void Column::draw(int x, int y)
 {
     int h = height;
 
-    attron(COLOR_PAIR(color));
+    // Clear the space to make room for the column
+    attron(COLOR_PAIR(BLACK));
+    for (int i = 0; i < y; i++)
+        mvprintw(i, x, " ");
+    attroff(COLOR_PAIR(BLACK));
 
+    attron(COLOR_PAIR(color));
     // Start at the (x, y-h) location and draw downward
     while (h > 0)
     {
         mvprintw(y-h, x, "#");
         h--;
     }
-
     attroff(COLOR_PAIR(color));
 }
 
