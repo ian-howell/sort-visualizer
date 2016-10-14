@@ -1,6 +1,15 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+#define SECOND 1000000
+
+enum Color
+{
+    BLACK,
+    WHITE,
+    RED,
+};
+
 /* swap
  * Swaps 2 values
  *

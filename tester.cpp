@@ -6,18 +6,10 @@
 #include "column.h"
 #include "sorts.h"
 
-#define SECOND 1000000
 
 using namespace std;
 
 const int SIZE = 10;
-
-enum
-{
-    BLACK,
-    WHITE,
-    RED,
-};
 
 void test_qsort_ints();
 void test_qsort_doubles();
@@ -55,7 +47,14 @@ int main()
 
     // Test Bubble Sort
     for (int i = 0; i < x; i++)
+    {
         columns[i].setHeight(rand() % y);
+        if (i%2)
+            columns[i].setColor(WHITE);
+        else
+            columns[i].setColor(RED);
+
+    }
 
     mvprintw(0, 0, "Bubble Sort");
     test_column_printing(columns, x, y);
@@ -69,7 +68,10 @@ int main()
 
     // Test Insertion Sort
     for (int i = 0; i < x; i++)
+    {
         columns[i].setHeight(rand() % y);
+        columns[i].setColor(WHITE);
+    }
 
     mvprintw(0, 0, "Insertion Sort");
     test_column_printing(columns, x, y);
@@ -83,7 +85,10 @@ int main()
 
     // Test Selection Sort
     for (int i = 0; i < x; i++)
+    {
         columns[i].setHeight(rand() % y);
+        columns[i].setColor(WHITE);
+    }
 
     mvprintw(0, 0, "Selection Sort");
     test_column_printing(columns, x, y);
@@ -97,7 +102,10 @@ int main()
 
     // Test Quick Sort
     for (int i = 0; i < x; i++)
+    {
         columns[i].setHeight(rand() % y);
+        columns[i].setColor(WHITE);
+    }
 
     mvprintw(0, 0, "Quick Sort");
     test_column_printing(columns, x, y);
@@ -156,8 +164,8 @@ void test_qsort_doubles()
 
 void test_column_comparison()
 {
-    Column* c1 = new Column(5);
-    Column* c2 = new Column(10);
+    Column* c1 = new Column(5, WHITE);
+    Column* c2 = new Column(10, WHITE);
 
     if (c1 > c2)
         cout << "c1 is > c2" << endl;
@@ -171,7 +179,7 @@ void test_column_printing(Column columns[], int x, int y)
 {
     for (int i = 0; i < x; i++)
     {
-        columns[i].draw(i, y, WHITE);
+        columns[i].draw(i, y);
         refresh();
         usleep(SECOND * 0.01);
     }

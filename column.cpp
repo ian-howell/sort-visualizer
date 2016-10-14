@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include "column.h"
 
-void Column::draw(int x, int y, int color)
+void Column::draw(int x, int y)
 {
     int h = height;
 
