@@ -9,6 +9,13 @@ using namespace std;
 
 const int SIZE = 10;
 
+enum
+{
+    BLACK,
+    WHITE,
+    RED,
+};
+
 void test_qsort_ints();
 void test_qsort_doubles();
 void test_column_comparison();
@@ -30,8 +37,9 @@ int main()
     // Begin visual testing
     initscr();
     start_color();
-    init_pair(1, COLOR_BLACK, COLOR_BLACK);
-    init_pair(2, COLOR_WHITE, COLOR_WHITE);
+    init_pair(BLACK, COLOR_BLACK, COLOR_BLACK);
+    init_pair(WHITE, COLOR_WHITE, COLOR_WHITE);
+    init_pair(RED  , COLOR_RED  , COLOR_RED  );
     getchar();
     clear();
 
@@ -117,7 +125,7 @@ void test_column_printing(Column columns[], int x, int y)
 {
     for (int i = 0; i < x; i++)
     {
-        columns[i].draw(i, y);
+        columns[i].draw(i, y, RED);
         refresh();
         getchar();
     }

@@ -18,8 +18,9 @@ class Column
          *
          * Param x {int}: the horizontal location to start drawing from
          * Param y {int}: the vertical location to start drawing from
+         * Param color {int}: The color pair to draw the column with
          */
-        void draw(int x, int y);
+        void draw(int x, int y, int color);
 
         /* Operator overload: <
          *

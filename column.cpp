@@ -1,11 +1,11 @@
 #include <ncurses.h>
 #include "column.h"
 
-void Column::draw(int x, int y)
+void Column::draw(int x, int y, int color)
 {
     int h = height;
 
-    attron(COLOR_PAIR(2));
+    attron(COLOR_PAIR(color));
 
     // Start at the (x, y-h) location and draw downward
     while (h > 0)
@@ -14,7 +14,7 @@ void Column::draw(int x, int y)
         h--;
     }
 
-    attroff(COLOR_PAIR(2));
+    attroff(COLOR_PAIR(color));
 }
 
 bool operator < (const Column& c1, const Column& c2)
