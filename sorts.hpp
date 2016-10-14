@@ -55,3 +55,14 @@ void selection_sort(T a[], int size)
     }
 }
 
+template <typename T>
+void insertion_sort(T a[], int size)
+{
+    for (int i = 1; i < size; i++)
+    {
+        for (int j = i - 1; j >= 0 && a[j] > a[j+1]; j--)
+        {
+            swap(a[j], a[j+1]);
+        }
+    }
+}

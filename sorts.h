@@ -31,6 +31,17 @@ void bubble_sort(T a[], int size);
 template <typename T>
 void selection_sort(T a[], int size);
 
+/* insertion_sort
+ * Sort using insertion sort
+ *
+ * Inital call: insertion_sort(array, size-1)
+ *
+ * Running time: ~ O(n^2)
+ */
+template <typename T>
+void insertion_sort(T a[], int size);
+
+
 #include "sorts.hpp"
 
 #endif
