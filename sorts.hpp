@@ -33,3 +33,25 @@ void bubble_sort(T a[], int size)
                 swap(a[j], a[j+1]);
     return;
 }
+
+template <typename T>
+void selection_sort(T a[], int size)
+{
+    T min;
+    int minIndex;
+    for (int i = 0; i < size - 1; i++)
+    {
+        min = a[i];
+        minIndex = i;
+        for (int j = i + 1; j < size; j++)
+        {
+            if (a[j] < min)
+            {
+                min = a[j];
+                minIndex = j;
+            }
+        }
+        swap(a[i], a[minIndex]);
+    }
+}
+

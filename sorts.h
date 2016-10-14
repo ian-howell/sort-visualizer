@@ -21,6 +21,16 @@ void quick_sort(T a[], int b, int e);
 template <typename T>
 void bubble_sort(T a[], int size);
 
+/* selection_sort
+ * Sort using selection sort
+ *
+ * Inital call: selection_sort(array, size-1)
+ *
+ * Running time: ~ O(n^2)
+ */
+template <typename T>
+void selection_sort(T a[], int size);
+
 #include "sorts.hpp"
 
 #endif
