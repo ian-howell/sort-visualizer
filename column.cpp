@@ -16,3 +16,13 @@ void Column::draw(int x, int y)
 
     attroff(COLOR_PAIR(2));
 }
+
+bool operator < (const Column& c1, const Column& c2)
+{
+    return c1.height < c2.height;
+}
+
+bool operator > (const Column& c1, const Column& c2)
+{
+    return c1.height > c2.height;
+}
