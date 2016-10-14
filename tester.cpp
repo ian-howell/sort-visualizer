@@ -5,6 +5,9 @@
 #include <ncurses.h>
 #include "column.h"
 #include "sorts.h"
+
+#define SECOND 1000000
+
 using namespace std;
 
 const int SIZE = 10;
@@ -26,13 +29,13 @@ int main()
     srand(time(NULL));
 
     // Test quicksort with integers
-    test_qsort_ints();
+    /* test_qsort_ints(); */
 
     // Test quicksort with doubles
-    test_qsort_doubles();
+    /* test_qsort_doubles(); */
 
     // Test column comparison
-    test_column_comparison();
+    /* test_column_comparison(); */
 
     // Begin visual testing
     initscr();
@@ -40,8 +43,8 @@ int main()
     init_pair(BLACK, COLOR_BLACK, COLOR_BLACK);
     init_pair(WHITE, COLOR_WHITE, COLOR_WHITE);
     init_pair(RED  , COLOR_RED  , COLOR_RED  );
-    getchar();
-    clear();
+    /* getchar(); */
+    /* clear(); */
 
     int x, y;
     getmaxyx(stdscr, y, x);
@@ -49,19 +52,62 @@ int main()
     refresh();
 
     Column columns[x];
+
+    // Test Bubble Sort
     for (int i = 0; i < x; i++)
         columns[i].setHeight(rand() % y);
 
-    // Test printing unsorted columns
+    mvprintw(0, 0, "Bubble Sort");
     test_column_printing(columns, x, y);
-
+    getchar();
+    clear();
+    mvprintw(0, 0, "Bubble Sort");
+    bubble_sort(columns, x);
+    test_column_printing(columns, x, y);
+    getchar();
     clear();
 
-    // Test sorting columns
+    // Test Insertion Sort
+    for (int i = 0; i < x; i++)
+        columns[i].setHeight(rand() % y);
+
+    mvprintw(0, 0, "Insertion Sort");
+    test_column_printing(columns, x, y);
+    getchar();
+    clear();
+    mvprintw(0, 0, "Insertion Sort");
+    insertion_sort(columns, x);
+    test_column_printing(columns, x, y);
+    getchar();
+    clear();
+
+    // Test Selection Sort
+    for (int i = 0; i < x; i++)
+        columns[i].setHeight(rand() % y);
+
+    mvprintw(0, 0, "Selection Sort");
+    test_column_printing(columns, x, y);
+    getchar();
+    clear();
+    mvprintw(0, 0, "Selection Sort");
+    selection_sort(columns, x);
+    test_column_printing(columns, x, y);
+    getchar();
+    clear();
+
+    // Test Quick Sort
+    for (int i = 0; i < x; i++)
+        columns[i].setHeight(rand() % y);
+
+    mvprintw(0, 0, "Quick Sort");
+    test_column_printing(columns, x, y);
+    getchar();
+    clear();
+    mvprintw(0, 0, "Quick Sort");
     quick_sort(columns, 0, x);
     test_column_printing(columns, x, y);
-
     getchar();
+
     endwin();
 
     return 0;
@@ -125,9 +171,9 @@ void test_column_printing(Column columns[], int x, int y)
 {
     for (int i = 0; i < x; i++)
     {
-        columns[i].draw(i, y, RED);
+        columns[i].draw(i, y, WHITE);
         refresh();
-        getchar();
+        usleep(SECOND * 0.01);
     }
 }
 
