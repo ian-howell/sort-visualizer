@@ -14,7 +14,7 @@ const int SIZE = 10;
 void test_qsort_ints();
 void test_qsort_doubles();
 void test_column_comparison();
-void test_column_printing(Column columns[], int x, int y);
+/* void test_column_printing(Column columns[], int x, int y); */
 
 int main()
 {
@@ -45,49 +45,54 @@ int main()
 
     Column columns[x];
 
-    // Test Bubble Sort
-    for (int i = 0; i < x; i++)
-    {
-        columns[i].setHeight(rand() % y);
-        if (i%2)
-            columns[i].setColor(WHITE);
-        else
-            columns[i].setColor(RED);
+    /* // Test Bubble Sort */
+    /* for (int i = 0; i < x; i++) */
+    /* { */
+    /*     columns[i].setHeight(1 + (rand() % y)); */
+    /*     if (i%2) */
+    /*         columns[i].setColor(WHITE); */
+    /*     else */
+    /*         columns[i].setColor(RED); */
+    /* } */
 
-    }
+    /* mvprintw(0, 0, "Bubble Sort"); */
+    /* test_column_printing(columns, x, y); */
+    /* getchar(); */
+    /* clear(); */
+    /* mvprintw(0, 0, "Bubble Sort"); */
+    /* bubble_sort(columns, x, y); */
+    /* test_column_printing(columns, x, y); */
+    /* getchar(); */
+    /* clear(); */
 
-    mvprintw(0, 0, "Bubble Sort");
-    test_column_printing(columns, x, y);
-    getchar();
-    clear();
-    mvprintw(0, 0, "Bubble Sort");
-    bubble_sort(columns, x);
-    test_column_printing(columns, x, y);
-    getchar();
-    clear();
+    /* // Test Insertion Sort */
+    /* for (int i = 0; i < x; i++) */
+    /* { */
+    /*     columns[i].setHeight(1 + (rand() % y)); */
+    /*     if (i%2) */
+    /*         columns[i].setColor(WHITE); */
+    /*     else */
+    /*         columns[i].setColor(RED); */
+    /* } */
 
-    // Test Insertion Sort
-    for (int i = 0; i < x; i++)
-    {
-        columns[i].setHeight(rand() % y);
-        columns[i].setColor(WHITE);
-    }
-
-    mvprintw(0, 0, "Insertion Sort");
-    test_column_printing(columns, x, y);
-    getchar();
-    clear();
-    mvprintw(0, 0, "Insertion Sort");
-    insertion_sort(columns, x);
-    test_column_printing(columns, x, y);
-    getchar();
-    clear();
+    /* mvprintw(0, 0, "Insertion Sort"); */
+    /* test_column_printing(columns, x, y); */
+    /* getchar(); */
+    /* clear(); */
+    /* mvprintw(0, 0, "Insertion Sort"); */
+    /* insertion_sort(columns, x, y); */
+    /* test_column_printing(columns, x, y); */
+    /* getchar(); */
+    /* clear(); */
 
     // Test Selection Sort
     for (int i = 0; i < x; i++)
     {
-        columns[i].setHeight(rand() % y);
-        columns[i].setColor(WHITE);
+        columns[i].setHeight(1 + (rand() % y));
+        if (i%2)
+            columns[i].setColor(WHITE);
+        else
+            columns[i].setColor(RED);
     }
 
     mvprintw(0, 0, "Selection Sort");
@@ -95,7 +100,7 @@ int main()
     getchar();
     clear();
     mvprintw(0, 0, "Selection Sort");
-    selection_sort(columns, x);
+    selection_sort(columns, x, y);
     test_column_printing(columns, x, y);
     getchar();
     clear();
@@ -103,8 +108,11 @@ int main()
     // Test Quick Sort
     for (int i = 0; i < x; i++)
     {
-        columns[i].setHeight(rand() % y);
-        columns[i].setColor(WHITE);
+        columns[i].setHeight(1 + (rand() % y));
+        if (i%2)
+            columns[i].setColor(WHITE);
+        else
+            columns[i].setColor(RED);
     }
 
     mvprintw(0, 0, "Quick Sort");
@@ -175,13 +183,13 @@ void test_column_comparison()
     delete c2;
 }
 
-void test_column_printing(Column columns[], int x, int y)
-{
-    for (int i = 0; i < x; i++)
-    {
-        columns[i].draw(i, y);
-        refresh();
-        usleep(SECOND * 0.01);
-    }
-}
+/* void test_column_printing(Column columns[], int x, int y) */
+/* { */
+/*     for (int i = 0; i < x; i++) */
+/*     { */
+/*         columns[i].draw(i, y); */
+/*         refresh(); */
+/*         usleep(SECOND * 0.01); */
+/*     } */
+/* } */
 

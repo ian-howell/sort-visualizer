@@ -19,7 +19,7 @@ void quick_sort(T a[], int b, int e);
  * Running time: ~ O(n^3)
  */
 template <typename T>
-void bubble_sort(T a[], int size);
+void bubble_sort(T a[], int size, int y);
 
 /* selection_sort
  * Sort using selection sort
@@ -29,7 +29,7 @@ void bubble_sort(T a[], int size);
  * Running time: ~ O(n^2)
  */
 template <typename T>
-void selection_sort(T a[], int size);
+void selection_sort(T a[], int size, int y);
 
 /* insertion_sort
  * Sort using insertion sort
@@ -39,7 +39,7 @@ void selection_sort(T a[], int size);
  * Running time: ~ O(n^2)
  */
 template <typename T>
-void insertion_sort(T a[], int size);
+void insertion_sort(T a[], int size, int y);
 
 
 #include "sorts.hpp"
