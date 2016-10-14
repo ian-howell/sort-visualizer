@@ -32,10 +32,11 @@ void bubble_sort(T a[], int size, int y)
             if (a[j] > a[j+1])
             {
                 swap(a[j], a[j+1]);
-                clear();
+                a[j].draw(j, y);
+                a[j+1].draw(j+1, y);
                 mvprintw(0, 0, "Bubble Sort");
-                test_column_printing(a, size, y);
-                usleep(SECOND * 0.1);
+                refresh();
+                usleep(SECOND * 0.01);
             }
     return;
 }
@@ -58,9 +59,10 @@ void selection_sort(T a[], int size, int y)
             }
         }
         swap(a[i], a[minIndex]);
+        a[i].draw(i, y);
+        a[minIndex].draw(minIndex, y);
         mvprintw(0, 0, "Selection Sort");
-        clear();
-        test_column_printing(a, size, y);
+        refresh();
         usleep(SECOND * 0.1);
     }
 }
@@ -73,10 +75,11 @@ void insertion_sort(T a[], int size, int y)
         for (int j = i - 1; j >= 0 && a[j] > a[j+1]; j--)
         {
             swap(a[j], a[j+1]);
-            clear();
+            a[j].draw(j, y);
+            a[j+1].draw(j+1, y);
             mvprintw(0, 0, "Insertion Sort");
-            test_column_printing(a, size, y);
-            usleep(SECOND * 0.1);
+            refresh();
+            usleep(SECOND * 0.01);
         }
     }
 }

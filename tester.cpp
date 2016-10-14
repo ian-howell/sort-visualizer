@@ -35,8 +35,6 @@ int main()
     init_pair(BLACK, COLOR_BLACK, COLOR_BLACK);
     init_pair(WHITE, COLOR_WHITE, COLOR_WHITE);
     init_pair(RED  , COLOR_RED  , COLOR_RED  );
-    /* getchar(); */
-    /* clear(); */
 
     int x, y;
     getmaxyx(stdscr, y, x);
@@ -45,45 +43,41 @@ int main()
 
     Column columns[x];
 
-    /* // Test Bubble Sort */
-    /* for (int i = 0; i < x; i++) */
-    /* { */
-    /*     columns[i].setHeight(1 + (rand() % y)); */
-    /*     if (i%2) */
-    /*         columns[i].setColor(WHITE); */
-    /*     else */
-    /*         columns[i].setColor(RED); */
-    /* } */
+    // Test Bubble Sort
+    for (int i = 0; i < x; i++)
+    {
+        columns[i].setHeight(1 + (rand() % y));
+        if (i%2)
+            columns[i].setColor(WHITE);
+        else
+            columns[i].setColor(RED);
+    }
 
-    /* mvprintw(0, 0, "Bubble Sort"); */
-    /* test_column_printing(columns, x, y); */
-    /* getchar(); */
-    /* clear(); */
-    /* mvprintw(0, 0, "Bubble Sort"); */
-    /* bubble_sort(columns, x, y); */
-    /* test_column_printing(columns, x, y); */
-    /* getchar(); */
-    /* clear(); */
+    test_column_printing(columns, x, y);
+    mvprintw(0, 0, "Bubble Sort");
+    refresh();
+    getchar();
+    bubble_sort(columns, x, y);
+    getchar();
+    clear();
 
-    /* // Test Insertion Sort */
-    /* for (int i = 0; i < x; i++) */
-    /* { */
-    /*     columns[i].setHeight(1 + (rand() % y)); */
-    /*     if (i%2) */
-    /*         columns[i].setColor(WHITE); */
-    /*     else */
-    /*         columns[i].setColor(RED); */
-    /* } */
+    // Test Insertion Sort
+    for (int i = 0; i < x; i++)
+    {
+        columns[i].setHeight(1 + (rand() % y));
+        if (i%2)
+            columns[i].setColor(WHITE);
+        else
+            columns[i].setColor(RED);
+    }
 
-    /* mvprintw(0, 0, "Insertion Sort"); */
-    /* test_column_printing(columns, x, y); */
-    /* getchar(); */
-    /* clear(); */
-    /* mvprintw(0, 0, "Insertion Sort"); */
-    /* insertion_sort(columns, x, y); */
-    /* test_column_printing(columns, x, y); */
-    /* getchar(); */
-    /* clear(); */
+    test_column_printing(columns, x, y);
+    mvprintw(0, 0, "Insertion Sort");
+    refresh();
+    getchar();
+    insertion_sort(columns, x, y);
+    getchar();
+    clear();
 
     // Test Selection Sort
     for (int i = 0; i < x; i++)
@@ -95,13 +89,11 @@ int main()
             columns[i].setColor(RED);
     }
 
-    mvprintw(0, 0, "Selection Sort");
     test_column_printing(columns, x, y);
+    mvprintw(0, 0, "Selection Sort");
+    refresh();
     getchar();
-    clear();
-    mvprintw(0, 0, "Selection Sort");
     selection_sort(columns, x, y);
-    test_column_printing(columns, x, y);
     getchar();
     clear();
 
@@ -115,11 +107,10 @@ int main()
             columns[i].setColor(RED);
     }
 
-    mvprintw(0, 0, "Quick Sort");
     test_column_printing(columns, x, y);
-    getchar();
-    clear();
     mvprintw(0, 0, "Quick Sort");
+    refresh();
+    getchar();
     quick_sort(columns, 0, x);
     test_column_printing(columns, x, y);
     getchar();
