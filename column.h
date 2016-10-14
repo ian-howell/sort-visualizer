@@ -7,7 +7,10 @@ class Column
         int height;
 
     public:
+        Column() : height(0) {}
         Column(int h) : height(h) {}
+
+        void setHeight(int h) { this->height = h; }
 
         /* draw
          *
