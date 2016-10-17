@@ -28,16 +28,25 @@ template <typename T>
 void bubble_sort(T a[], int size, int y)
 {
     for (int i = 0; i < size; i++)
-        for (int j = 0; j < size-1; j++)
+    {
+        for (int j = 0; j < size-1-i; j++)
+        {
+            a[j].setColor(YELLOW);
+            a[j].draw(j, y);
+            mvprintw(0, 0, "Bubble Sort");
+            refresh();
+            usleep(SECOND * 0.01);
             if (a[j] > a[j+1])
             {
                 swap(a[j], a[j+1]);
-                a[j].draw(j, y);
-                a[j+1].draw(j+1, y);
-                mvprintw(0, 0, "Bubble Sort");
-                refresh();
-                usleep(SECOND * 0.01);
             }
+            a[j].setColor(WHITE);
+            a[j].draw(j, y);
+        }
+        a[size-1-i].setColor(GREEN);
+        a[size-1-i].draw(size-1-i, y);
+        refresh();
+    }
     return;
 }
 

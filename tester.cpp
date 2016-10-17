@@ -57,6 +57,8 @@ int main()
     refresh();
     getchar();
     bubble_sort(columns, x, y);
+    mvprintw(0, 0, "Bubble Sort");
+    refresh();
     getchar();
     clear();
 
