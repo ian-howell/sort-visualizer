@@ -12,6 +12,14 @@ enum Color
     GREEN,
 };
 
+enum Option
+{
+    BUBBLE,
+    INSERTION,
+    SELECTION,
+    QUICK,
+};
+
 /* swap
  * Swaps 2 values
  *

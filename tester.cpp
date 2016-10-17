@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <ctime>
 #include <ncurses.h>
+#include <string.h>
 #include "column.h"
 #include "sorts.h"
 
@@ -14,23 +15,37 @@ const int SIZE = 10;
 void test_qsort_ints();
 void test_qsort_doubles();
 void test_column_comparison();
-/* void test_column_printing(Column columns[], int x, int y); */
+void usage(const char* prgname);
 
-int main()
+int main(int argc, char* argv[])
 {
+    if (argc != 2)
+    {
+        usage(argv[0]);
+        return 0;
+    }
+
+    const char* opt = argv[1];
+    Option ch;
+    if (strcmp(opt, "bubble") == 0)
+        ch = BUBBLE;
+    else if (strcmp(opt, "insert") == 0)
+        ch = INSERTION;
+    else if (strcmp(opt, "select") == 0)
+        ch = SELECTION;
+    else if (strcmp(opt, "quick") == 0)
+        ch = QUICK;
+    else
+    {
+        usage(argv[0]);
+        return 0;
+    }
+
     srand(time(NULL));
-
-    // Test quicksort with integers
-    /* test_qsort_ints(); */
-
-    // Test quicksort with doubles
-    /* test_qsort_doubles(); */
-
-    // Test column comparison
-    /* test_column_comparison(); */
 
     // Begin visual testing
     initscr();
+    curs_set(0);
     start_color();
     init_pair(BLACK , COLOR_BLACK , COLOR_BLACK );
     init_pair(WHITE , COLOR_WHITE , COLOR_WHITE );
@@ -44,8 +59,6 @@ int main()
     refresh();
 
     Column columns[x];
-
-    // Test Bubble Sort
     for (int i = 0; i < x; i++)
     {
         columns[i].setHeight(1 + (rand() % y));
@@ -53,60 +66,44 @@ int main()
     }
 
     test_column_printing(columns, x, y);
-    mvprintw(0, 0, "Bubble Sort");
-    refresh();
-    getchar();
-    bubble_sort(columns, x, y);
-    mvprintw(0, 0, "Bubble Sort");
+    switch (ch)
+    {
+        case BUBBLE: // Test Bubble Sort
+            mvprintw(0, 0, "Bubble Sort");
+            refresh();
+            getchar();
+            bubble_sort(columns, x, y);
+            mvprintw(0, 0, "Bubble Sort");
+            break;
+
+        case INSERTION: // Test Insertion Sort
+            mvprintw(0, 0, "Insertion Sort");
+            refresh();
+            getchar();
+            insertion_sort(columns, x, y);
+            mvprintw(0, 0, "Insertion Sort");
+            break;
+
+        case SELECTION: // Test Selection Sort
+            mvprintw(0, 0, "Selection Sort");
+            refresh();
+            getchar();
+            selection_sort(columns, x, y);
+            mvprintw(0, 0, "Selection Sort");
+            break;
+
+        case QUICK: // Test Quick Sort
+            mvprintw(0, 0, "Quick Sort");
+            refresh();
+            getchar();
+            quick_sort(columns, 0, x);
+            test_column_printing(columns, x, y);
+            break;
+    }
+
     refresh();
     getchar();
     clear();
-
-    // Test Insertion Sort
-    for (int i = 0; i < x; i++)
-    {
-        columns[i].setHeight(1 + (rand() % y));
-        columns[i].setColor(WHITE);
-    }
-
-    test_column_printing(columns, x, y);
-    mvprintw(0, 0, "Insertion Sort");
-    refresh();
-    getchar();
-    insertion_sort(columns, x, y);
-    getchar();
-    clear();
-
-    // Test Selection Sort
-    for (int i = 0; i < x; i++)
-    {
-        columns[i].setHeight(1 + (rand() % y));
-        columns[i].setColor(WHITE);
-    }
-
-    test_column_printing(columns, x, y);
-    mvprintw(0, 0, "Selection Sort");
-    refresh();
-    getchar();
-    selection_sort(columns, x, y);
-    getchar();
-    clear();
-
-    // Test Quick Sort
-    for (int i = 0; i < x; i++)
-    {
-        columns[i].setHeight(1 + (rand() % y));
-        columns[i].setColor(WHITE);
-    }
-
-    test_column_printing(columns, x, y);
-    mvprintw(0, 0, "Quick Sort");
-    refresh();
-    getchar();
-    quick_sort(columns, 0, x);
-    test_column_printing(columns, x, y);
-    getchar();
-
     endwin();
 
     return 0;
@@ -166,13 +163,12 @@ void test_column_comparison()
     delete c2;
 }
 
-/* void test_column_printing(Column columns[], int x, int y) */
-/* { */
-/*     for (int i = 0; i < x; i++) */
-/*     { */
-/*         columns[i].draw(i, y); */
-/*         refresh(); */
-/*         usleep(SECOND * 0.01); */
-/*     } */
-/* } */
-
+void usage(const char* prgname)
+{
+    printf("Usage: %s <sort type>\n", prgname);
+    printf("SORTS\n");
+    printf("\tbubble\n");
+    printf("\tinsert\n");
+    printf("\tselect\n");
+    printf("\tquick\n");
+}
