@@ -32,9 +32,11 @@ int main()
     // Begin visual testing
     initscr();
     start_color();
-    init_pair(BLACK, COLOR_BLACK, COLOR_BLACK);
-    init_pair(WHITE, COLOR_WHITE, COLOR_WHITE);
-    init_pair(RED  , COLOR_RED  , COLOR_RED  );
+    init_pair(BLACK , COLOR_BLACK , COLOR_BLACK );
+    init_pair(WHITE , COLOR_WHITE , COLOR_WHITE );
+    init_pair(RED   , COLOR_RED   , COLOR_RED   );
+    init_pair(YELLOW, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(GREEN , COLOR_GREEN , COLOR_GREEN );
 
     int x, y;
     getmaxyx(stdscr, y, x);
@@ -47,10 +49,7 @@ int main()
     for (int i = 0; i < x; i++)
     {
         columns[i].setHeight(1 + (rand() % y));
-        if (i%2)
-            columns[i].setColor(WHITE);
-        else
-            columns[i].setColor(RED);
+        columns[i].setColor(WHITE);
     }
 
     test_column_printing(columns, x, y);
@@ -65,10 +64,7 @@ int main()
     for (int i = 0; i < x; i++)
     {
         columns[i].setHeight(1 + (rand() % y));
-        if (i%2)
-            columns[i].setColor(WHITE);
-        else
-            columns[i].setColor(RED);
+        columns[i].setColor(WHITE);
     }
 
     test_column_printing(columns, x, y);
@@ -83,10 +79,7 @@ int main()
     for (int i = 0; i < x; i++)
     {
         columns[i].setHeight(1 + (rand() % y));
-        if (i%2)
-            columns[i].setColor(WHITE);
-        else
-            columns[i].setColor(RED);
+        columns[i].setColor(WHITE);
     }
 
     test_column_printing(columns, x, y);
@@ -101,10 +94,7 @@ int main()
     for (int i = 0; i < x; i++)
     {
         columns[i].setHeight(1 + (rand() % y));
-        if (i%2)
-            columns[i].setColor(WHITE);
-        else
-            columns[i].setColor(RED);
+        columns[i].setColor(WHITE);
     }
 
     test_column_printing(columns, x, y);

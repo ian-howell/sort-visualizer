@@ -16,7 +16,7 @@ void Column::draw(int x, int y)
     // Start at the (x, y-h) location and draw downward
     while (h > 0)
     {
-        mvprintw(y-h, x, "#");
+        mvprintw(y-h, x, " ");
         h--;
     }
     attroff(COLOR_PAIR(color));

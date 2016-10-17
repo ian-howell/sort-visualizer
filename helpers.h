@@ -8,6 +8,8 @@ enum Color
     BLACK,
     WHITE,
     RED,
+    YELLOW,
+    GREEN,
 };
 
 /* swap
