@@ -94,16 +94,23 @@ void selection_sort(T a[], int size, int y)
 template <typename T>
 void insertion_sort(T a[], int size, int y)
 {
-    for (int i = 1; i < size; i++)
+    Color temp;
+    for (int i = 0; i < size; i++)
     {
-        for (int j = i - 1; j >= 0 && a[j] > a[j+1]; j--)
+        for (int j = i+1; j > 0 && a[j] < a[j-1]; j--)
         {
-            swap(a[j], a[j+1]);
+            a[j].setColor(YELLOW);
+            a[j-1].setColor(GREEN);
             a[j].draw(j, y);
-            a[j+1].draw(j+1, y);
+            a[j-1].draw(j-1, y);
+            swap(a[j], a[j-1]);
             mvprintw(0, 0, "Insertion Sort");
             refresh();
             usleep(SECOND * 0.01);
+            a[j].setColor(GREEN);
+            a[j-1].setColor(GREEN);
+            a[j].draw(j, y);
+            a[j-1].draw(j-1, y);
         }
     }
 }
