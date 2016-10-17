@@ -37,7 +37,5 @@ void test_column_printing(Column columns[], int x, int y)
     for (int i = 0; i < x; i++)
     {
         columns[i].draw(i, y);
-        refresh();
-        /* usleep(SECOND * 0.01); */
     }
 }
