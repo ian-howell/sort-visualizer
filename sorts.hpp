@@ -61,19 +61,34 @@ void selection_sort(T a[], int size, int y)
         minIndex = i;
         for (int j = i + 1; j < size; j++)
         {
+            a[j].setColor(YELLOW);
+            a[j].draw(j, y);
+            a[minIndex].setColor(RED);
+            a[minIndex].draw(minIndex, y);
+            mvprintw(0, 0, "Selection Sort");
+            refresh();
+            usleep(SECOND * 0.01);
             if (a[j] < min)
             {
+                a[minIndex].setColor(WHITE);
+                a[minIndex].draw(minIndex, y);
                 min = a[j];
                 minIndex = j;
             }
+            a[j].setColor(WHITE);
+            a[j].draw(j, y);
         }
-        swap(a[i], a[minIndex]);
-        a[i].draw(i, y);
+
+        a[minIndex].setColor(WHITE);
         a[minIndex].draw(minIndex, y);
-        mvprintw(0, 0, "Selection Sort");
+        swap(a[i], a[minIndex]);
+
+        a[i].setColor(GREEN);
+        a[i].draw(i, y);
         refresh();
-        usleep(SECOND * 0.1);
     }
+    a[size - 1].setColor(GREEN);
+    a[size - 1].draw(size - 1, y);
 }
 
 template <typename T>
