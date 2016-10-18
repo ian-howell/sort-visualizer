@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
         case BUBBLE: // Test Bubble Sort
             mvprintw(0, 0, "Bubble Sort");
             refresh();
-            /* getchar(); */
+            getchar();
             bubble_sort(columns, x, y);
             mvprintw(0, 0, "Bubble Sort");
             break;
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
         case INSERTION: // Test Insertion Sort
             mvprintw(0, 0, "Insertion Sort");
             refresh();
-            /* getchar(); */
+            getchar();
             insertion_sort(columns, x, y);
             mvprintw(0, 0, "Insertion Sort");
             break;
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
         case SELECTION: // Test Selection Sort
             mvprintw(0, 0, "Selection Sort");
             refresh();
-            /* getchar(); */
+            getchar();
             selection_sort(columns, x, y);
             mvprintw(0, 0, "Selection Sort");
             break;
@@ -92,14 +92,16 @@ int main(int argc, char* argv[])
         case QUICK: // Test Quick Sort
             mvprintw(0, 0, "Quick Sort");
             refresh();
-            /* getchar(); */
+            getchar();
             quick_sort(columns, 0, x-1, y);
             mvprintw(0, 0, "Quick Sort");
             break;
     }
 
+    mvprintw(1, 0, "Done!");
+    mvprintw(2, 0, "Press any key to exit...");
     refresh();
-    /* getchar(); */
+    getchar();
     clear();
     endwin();
 
