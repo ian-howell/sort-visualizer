@@ -12,9 +12,6 @@ using namespace std;
 
 const int SIZE = 10;
 
-void test_qsort_ints();
-void test_qsort_doubles();
-void test_column_comparison();
 void usage(const char* prgname);
 
 int main(int argc, char* argv[])
@@ -107,60 +104,6 @@ int main(int argc, char* argv[])
     endwin();
 
     return 0;
-}
-
-void test_qsort_ints()
-{
-    cout << "INTS" << endl;
-    int a[SIZE];
-    for (int i = 0; i < SIZE; i++)
-    {
-        a[i] = rand() % 100;
-        cout << a[i] << " ";
-    }
-    cout << endl;
-
-    quick_sort(a, 0, SIZE-1);
-
-    for (int i = 0; i < SIZE; i++)
-    {
-        cout << a[i] << " ";
-    }
-    cout << endl;
-    return;
-}
-
-void test_qsort_doubles()
-{
-    cout << "DOUBLES" << endl;
-    double b[SIZE];
-    for (int i = 0; i < SIZE; i++)
-    {
-        b[i] = (rand() % 100) / 2.0;
-        cout << b[i] << " ";
-    }
-    cout << endl;
-
-    quick_sort(b, 0, SIZE-1);
-
-    for (int i = 0; i < SIZE; i++)
-    {
-        cout << b[i] << " ";
-    }
-    cout << endl;
-}
-
-void test_column_comparison()
-{
-    Column* c1 = new Column(5, WHITE);
-    Column* c2 = new Column(10, WHITE);
-
-    if (c1 > c2)
-        cout << "c1 is > c2" << endl;
-    else if (c1 < c2)
-        cout << "c1 is < c2" << endl;
-    delete c1;
-    delete c2;
 }
 
 void usage(const char* prgname)
