@@ -71,7 +71,6 @@ void bubble_sort(T a[], int size, int y)
         }
         a[size-1-i].setColor(GREEN);
         a[size-1-i].draw(size-1-i, y);
-        refresh();
     }
     return;
 }
@@ -94,6 +93,8 @@ void selection_sort(T a[], int size, int y)
             mvprintw(0, 0, "Selection Sort");
             refresh();
             usleep(SECOND * 0.01);
+            a[j].setColor(WHITE);
+            a[j].draw(j, y);
             if (a[j] < min)
             {
                 a[minIndex].setColor(WHITE);
@@ -101,17 +102,14 @@ void selection_sort(T a[], int size, int y)
                 min = a[j];
                 minIndex = j;
             }
-            a[j].setColor(WHITE);
-            a[j].draw(j, y);
         }
+
+        swap(a[i], a[minIndex]);
 
         a[minIndex].setColor(WHITE);
         a[minIndex].draw(minIndex, y);
-        swap(a[i], a[minIndex]);
-
         a[i].setColor(GREEN);
         a[i].draw(i, y);
-        refresh();
     }
     a[size - 1].setColor(GREEN);
     a[size - 1].draw(size - 1, y);
@@ -120,7 +118,6 @@ void selection_sort(T a[], int size, int y)
 template <typename T>
 void insertion_sort(T a[], int size, int y)
 {
-    Color temp;
     for (int i = 0; i < size; i++)
     {
         for (int j = i+1; j > 0 && a[j] < a[j-1]; j--)
