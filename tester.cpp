@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
             refresh();
             getchar();
             quick_sort(columns, 0, x-1, y);
-            test_column_printing(columns, x, y);
+            mvprintw(0, 0, "Quick Sort");
             break;
     }
 

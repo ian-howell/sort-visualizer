@@ -1,26 +1,52 @@
 #include "helpers.h"
 template <typename T>
-void quick_sort(T a[], int b, int e)
+void quick_sort(T a[], int b, int e, int y)
 {
-    if (b >= e)
+    if (b > e)
         return;
 
-    T pivot = a[e];
     int w = b-1;
     int j = b;
     while (j != e)
     {
-        if (a[j] < pivot)
+        a[j].setColor(YELLOW);
+        a[j].draw(j, y);
+        a[w+1].setColor(RED);
+        a[w+1].draw(w+1, y);
+        mvprintw(0, 0, "Quick Sort");
+        refresh();
+        usleep(SECOND * 0.01);
+        a[j].setColor(WHITE);
+        a[j].draw(j, y);
+
+        if (a[j] < a[e])
         {
             w++;
+            a[w].setColor(WHITE);
+            a[w].draw(w, y);
             swap(a[w], a[j]);
+            a[w].setColor(WHITE);
+            a[w].draw(w, y);
+            a[j].draw(j, y);
         }
         j++;
+
     }
+
     w++;
     swap(a[w], a[e]);
-    quick_sort(a, b, w-1);
-    quick_sort(a, w+1, e);
+
+    a[e].setColor(WHITE);
+    a[e].draw(e, y);
+    a[w].setColor(GREEN);
+    a[w].draw(w, y);
+
+    mvprintw(0, 0, "Quick Sort");
+    refresh();
+    usleep(SECOND * 0.01);
+
+    quick_sort(a, b, w-1, y);
+    quick_sort(a, w+1, e, y);
     return;
 }
 
