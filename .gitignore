@@ -1,2 +1,8 @@
 # Test executable
 test
+
+# ACTUAL executable
+sort-visualizer
+
+# Object files
+*.o
