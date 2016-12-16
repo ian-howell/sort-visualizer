@@ -49,6 +49,7 @@ int main(int argc, char* argv[])
     init_pair(RED   , COLOR_RED   , COLOR_RED   );
     init_pair(YELLOW, COLOR_YELLOW, COLOR_YELLOW);
     init_pair(GREEN , COLOR_GREEN , COLOR_GREEN );
+    init_pair(BLUE  , COLOR_BLUE  , COLOR_BLUE  );
 
     int x, y;
     getmaxyx(stdscr, y, x);

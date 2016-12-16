@@ -10,6 +10,7 @@ enum Color
     RED,
     YELLOW,
     GREEN,
+    BLUE,
 };
 
 enum Option

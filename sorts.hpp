@@ -5,6 +5,8 @@ void quick_sort(T a[], int b, int e, int y)
     if (b > e)
         return;
 
+    a[e].setColor(BLUE);
+    a[e].draw(e, y);
     int w = b-1;
     int j = b;
     while (j != e)
