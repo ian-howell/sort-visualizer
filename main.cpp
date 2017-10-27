@@ -1,41 +1,25 @@
-#include <iostream>
 #include <cstdlib>
-#include <unistd.h>
 #include <ctime>
+#include <getopt.h>
+#include <iostream>
 #include <ncurses.h>
-#include <string.h>
+#include <unistd.h>
+
 #include "column.h"
+#include "helpers.h"
 #include "sorts.h"
 
-
 using namespace std;
-
-const int SIZE = 10;
 
 void usage(const char* prgname);
 
 int main(int argc, char* argv[])
 {
-    if (argc != 2)
+    Config config = get_config(argc, argv);
+    if (config.option == ERROR)
     {
         usage(argv[0]);
-        return 0;
-    }
-
-    const char* opt = argv[1];
-    Option ch;
-    if (strcmp(opt, "bubble") == 0)
-        ch = BUBBLE;
-    else if (strcmp(opt, "insert") == 0)
-        ch = INSERTION;
-    else if (strcmp(opt, "select") == 0)
-        ch = SELECTION;
-    else if (strcmp(opt, "quick") == 0)
-        ch = QUICK;
-    else
-    {
-        usage(argv[0]);
-        return 0;
+        return 1;
     }
 
     srand(time(NULL));
@@ -64,7 +48,7 @@ int main(int argc, char* argv[])
     }
 
     test_column_printing(columns, x, y);
-    switch (ch)
+    switch (config.option)
     {
         case BUBBLE: // Test Bubble Sort
             mvprintw(0, 0, "Bubble Sort");
@@ -96,6 +80,9 @@ int main(int argc, char* argv[])
             getchar();
             quick_sort(columns, 0, x-1, y);
             mvprintw(0, 0, "Quick Sort");
+            break;
+
+        default:
             break;
     }
 

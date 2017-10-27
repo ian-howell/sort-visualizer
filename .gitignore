@@ -1,8 +1,9 @@
-# Test executable
-test
-
-# ACTUAL executable
-sort-visualizer
+# Executable
+driver
 
 # Object files
 *.o
+
+# Dependency and tags files
+tags
+depend

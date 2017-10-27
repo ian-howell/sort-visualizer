@@ -1,21 +1,32 @@
-CXXHEADERS = $(wildcard *.h)
-CXXSOURCES = column.cpp
-CXXOBJECTS = $(CXXSOURCES:%.cpp=%.o)
+.PHONY: all clean
 
-MAINSOURCE = main.cpp
-MAINOBJECT = $(MAINSOURCE:%.cpp=%.o)
-
+CXX = /usr/bin/g++
+CXXFLAGS = -g -Wall -w -pedantic-errors -Wextra -Wconversion -std=c++11
 LINKER = -lncurses
 
-CPP = g++
-C_FLAGS = -Wall --pedantic-errors -O2
+SOURCES = $(wildcard *.cpp)
+HEADERS = $(wildcard *.h)
 
-sort-visualizer: ${CXXHEADERS} ${CXXOBJECTS} ${MAINOBJECT}
-	${CPP} ${C_FLAGS} ${CXXOBJECTS} ${MAINOBJECT} ${LINKER} -o sort-visualizer
+OBJECTS = $(SOURCES:%.cpp=%.o)
 
-%.o: %.cpp ${CXXHEADERS}
-	${CPP} -c $<
+default: driver
+
+%.o: %.cpp
+	@echo "Compiling $<"
+	@$(CXX) $(CXXFLAGS) -c $< $(LINKER) -o $@
+
+driver: $(OBJECTS)
+	@echo "Building $@"
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) $(LINKER) -o $@
 
 clean:
-	-@rm -f *.o
-	-@rm -f sort-visualizer
+	-@rm -f core
+	-@rm -f driver
+	-@rm -f depend
+	-@rm -f $(OBJECTS)
+
+depend: $(SOURCES) $(HEADERS)
+	@echo "Generating dependencies"
+	@$(CXX) -std=c++11 -MM *.cpp > $@
+
+-include depend

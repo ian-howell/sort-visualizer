@@ -19,6 +19,13 @@ enum Option
     INSERTION,
     SELECTION,
     QUICK,
+    ERROR,
+};
+
+struct Config
+{
+    Option option;
+    int fps;
 };
 
 /* swap
@@ -28,6 +35,8 @@ enum Option
  */
 template <typename T>
 void swap(T& x, T& y);
+
+Config get_config(const int argc, char** argv);
 
 #include "helpers.hpp"
 
