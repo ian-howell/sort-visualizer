@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 {
     // Get configuration from command line
     Config config = get_config(argc, argv);
-    if (config.option == ERROR)
+    if ((config.option == ERROR) || (config.fps < 1) || (config.fps > 60))
     {
         usage(argv[0]);
         return 1;
@@ -92,12 +92,14 @@ int main(int argc, char* argv[])
 
 void usage(const char* prgname)
 {
-    printf("Usage: %s <sort type>\n", prgname);
+    printf("Usage: %s --algorthim=<sort_type> --speed=<fps>\n", prgname);
     printf("SORTS\n");
     printf("\tbubble\n");
     printf("\tinsert\n");
     printf("\tselect\n");
     printf("\tquick\n");
+    printf("\n");
+    printf("<fps> must be in the range [1...60]\n");
 }
 
 void init_curses()

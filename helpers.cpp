@@ -1,5 +1,7 @@
 #include <getopt.h>
+#include <iostream>
 #include <stdlib.h>
+#include <string>
 #include <string.h>
 #include "helpers.h"
 
@@ -12,9 +14,9 @@ Config get_config(const int argc, char** argv)
         {"speed",        required_argument, 0, 's'}
     };
 
-    Config ret_val{ERROR, 60};
+    Config ret_val{ERROR, -1};
 
-    while ((c = getopt_long(argc, argv, "a:s", opts, &opt_index)) != -1)
+    while ((c = getopt_long(argc, argv, "a:s:", opts, &opt_index)) != -1)
     {
         switch (c)
         {
@@ -29,7 +31,7 @@ Config get_config(const int argc, char** argv)
                     ret_val.option = QUICK;
                 break;
             case 's':
-                ret_val.fps = atoi(optarg);
+                ret_val.fps = std::stoi(optarg);
                 break;
         }
     }
