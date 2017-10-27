@@ -13,8 +13,11 @@ using namespace std;
 
 void usage(const char* prgname);
 
+void init_curses();
+
 int main(int argc, char* argv[])
 {
+    // Get configuration from command line
     Config config = get_config(argc, argv);
     if (config.option == ERROR)
     {
@@ -24,16 +27,7 @@ int main(int argc, char* argv[])
 
     srand(time(NULL));
 
-    // Begin visual testing
-    initscr();
-    curs_set(0);
-    start_color();
-    init_pair(BLACK , COLOR_BLACK , COLOR_BLACK );
-    init_pair(WHITE , COLOR_WHITE , COLOR_WHITE );
-    init_pair(RED   , COLOR_RED   , COLOR_RED   );
-    init_pair(YELLOW, COLOR_YELLOW, COLOR_YELLOW);
-    init_pair(GREEN , COLOR_GREEN , COLOR_GREEN );
-    init_pair(BLUE  , COLOR_BLUE  , COLOR_BLUE  );
+    init_curses();
 
     int x, y;
     getmaxyx(stdscr, y, x);
@@ -104,4 +98,22 @@ void usage(const char* prgname)
     printf("\tinsert\n");
     printf("\tselect\n");
     printf("\tquick\n");
+}
+
+void init_curses()
+{
+    // Set up ncurses
+    initscr();
+
+    // Hide the curser
+    curs_set(0);
+
+    // Set up colors
+    start_color();
+    init_pair(BLACK , COLOR_BLACK , COLOR_BLACK );
+    init_pair(WHITE , COLOR_WHITE , COLOR_WHITE );
+    init_pair(RED   , COLOR_RED   , COLOR_RED   );
+    init_pair(YELLOW, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(GREEN , COLOR_GREEN , COLOR_GREEN );
+    init_pair(BLUE  , COLOR_BLUE  , COLOR_BLUE  );
 }
