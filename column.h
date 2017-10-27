@@ -44,6 +44,6 @@ class Column
         friend bool operator > (const Column& c1, const Column& c2);
 };
 
-void test_column_printing(Column columns[], int x, int y);
+void draw_columns(Column columns[], int x, int y);
 
 #endif

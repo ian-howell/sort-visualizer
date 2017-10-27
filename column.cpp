@@ -32,7 +32,7 @@ bool operator > (const Column& c1, const Column& c2)
     return c1.height > c2.height;
 }
 
-void test_column_printing(Column columns[], int x, int y)
+void draw_columns(Column columns[], int x, int y)
 {
     for (int i = 0; i < x; i++)
     {

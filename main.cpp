@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
         columns[i].setColor(WHITE);
     }
 
-    test_column_printing(columns, x, y);
+    draw_columns(columns, x, y);
     switch (config.option)
     {
         case BUBBLE: // Test Bubble Sort
