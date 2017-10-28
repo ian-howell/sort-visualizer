@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
             mvprintw(0, 0, "Bubble Sort");
             refresh();
             getchar();
-            bubble_sort(columns, x, y);
+            bubble_sort(columns, x, y, config.fps);
             mvprintw(0, 0, "Bubble Sort");
             break;
 
@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
             mvprintw(0, 0, "Insertion Sort");
             refresh();
             getchar();
-            insertion_sort(columns, x, y);
+            insertion_sort(columns, x, y, config.fps);
             mvprintw(0, 0, "Insertion Sort");
             break;
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
             mvprintw(0, 0, "Selection Sort");
             refresh();
             getchar();
-            selection_sort(columns, x, y);
+            selection_sort(columns, x, y, config.fps);
             mvprintw(0, 0, "Selection Sort");
             break;
 
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
             mvprintw(0, 0, "Quick Sort");
             refresh();
             getchar();
-            quick_sort(columns, 0, x-1, y);
+            quick_sort(columns, 0, x-1, y, config.fps);
             mvprintw(0, 0, "Quick Sort");
             break;
 

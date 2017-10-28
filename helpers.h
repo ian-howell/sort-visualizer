@@ -1,7 +1,7 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
-#define SECOND 1000000
+#define SECOND 1000000.0
 
 enum Color
 {

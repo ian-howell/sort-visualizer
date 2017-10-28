@@ -1,6 +1,6 @@
 #include "helpers.h"
 template <typename T>
-void quick_sort(T a[], int b, int e, int y)
+void quick_sort(T a[], int b, int e, int y, int fps)
 {
     if (b > e)
         return;
@@ -17,7 +17,7 @@ void quick_sort(T a[], int b, int e, int y)
         a[w+1].draw(w+1, y);
         mvprintw(0, 0, "Quick Sort");
         refresh();
-        usleep(SECOND * 0.01);
+        usleep(SECOND / fps);
         a[j].setColor(WHITE);
         a[j].draw(j, y);
 
@@ -45,15 +45,15 @@ void quick_sort(T a[], int b, int e, int y)
 
     mvprintw(0, 0, "Quick Sort");
     refresh();
-    usleep(SECOND * 0.01);
+    usleep(SECOND / fps);
 
-    quick_sort(a, b, w-1, y);
-    quick_sort(a, w+1, e, y);
+    quick_sort(a, b, w-1, y, fps);
+    quick_sort(a, w+1, e, y, fps);
     return;
 }
 
 template <typename T>
-void bubble_sort(T a[], int size, int y)
+void bubble_sort(T a[], int size, int y, int fps)
 {
     for (int i = 0; i < size; i++)
     {
@@ -63,7 +63,7 @@ void bubble_sort(T a[], int size, int y)
             a[j].draw(j, y);
             mvprintw(0, 0, "Bubble Sort");
             refresh();
-            usleep(SECOND * 0.01);
+            usleep(SECOND / fps);
             if (a[j] > a[j+1])
             {
                 swap(a[j], a[j+1]);
@@ -78,7 +78,7 @@ void bubble_sort(T a[], int size, int y)
 }
 
 template <typename T>
-void selection_sort(T a[], int size, int y)
+void selection_sort(T a[], int size, int y, int fps)
 {
     T min;
     int minIndex;
@@ -94,7 +94,7 @@ void selection_sort(T a[], int size, int y)
             a[minIndex].draw(minIndex, y);
             mvprintw(0, 0, "Selection Sort");
             refresh();
-            usleep(SECOND * 0.01);
+            usleep(SECOND / fps);
             a[j].setColor(WHITE);
             a[j].draw(j, y);
             if (a[j] < min)
@@ -118,7 +118,7 @@ void selection_sort(T a[], int size, int y)
 }
 
 template <typename T>
-void insertion_sort(T a[], int size, int y)
+void insertion_sort(T a[], int size, int y, int fps)
 {
     for (int i = 0; i < size; i++)
     {
@@ -131,7 +131,7 @@ void insertion_sort(T a[], int size, int y)
             swap(a[j], a[j-1]);
             mvprintw(0, 0, "Insertion Sort");
             refresh();
-            usleep(SECOND * 0.01);
+            usleep(SECOND / fps);
             a[j].setColor(GREEN);
             a[j-1].setColor(GREEN);
             a[j].draw(j, y);
