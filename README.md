@@ -42,11 +42,15 @@ where \<sort_type\> is one of `bubble`, `insert`, `select`, or `quick`, and
   <img src="media/bubble.gif" alt="Bubble Sort" />
 </p>
 
+**NOTE: Gif recordered at 45 FPS**
+
 ### Selection Sort
 
 <p align="center">
   <img src="media/select.gif" alt="Selection Sort" />
 </p>
+
+**NOTE: Gif recordered at 45 FPS**
 
 ### Insertion Sort
 
@@ -54,9 +58,12 @@ where \<sort_type\> is one of `bubble`, `insert`, `select`, or `quick`, and
   <img src="media/insert.gif" alt="Insertion Sort" />
 </p>
 
+**NOTE: Gif recordered at 20 FPS**
+
 ### Quicksort
 
 <p align="center">
   <img src="media/quick.gif" alt="Quicksort" />
 </p>
 
+**NOTE: Gif recordered at 15 FPS**
